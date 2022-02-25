@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Udacity Location Reminder</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="welcome_msg">Welcome to the location reminder app</string>
+    <string name="login_btn_text">login</string>
+    <string name="add_reminder_button">Add reminder button</string>
+    <string name="no_data">No Data</string>
+    <string name="logout">LOGOUT</string>
+    <string name="save">save</string>
+
+    <string name="location_required_error">Location services must be enabled for this game.</string>
+</resources>

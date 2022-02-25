@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_grah"
+    app:startDestination="@id/launchFragment">
+
+    <fragment
+        android:id="@+id/launchFragment"
+        android:name="com.example.udacitylocationreminder.fragments.LaunchFragment"
+        android:label="fragment_launch"
+        tools:layout="@layout/fragment_launch" >
+        <action
+            android:id="@+id/action_launchFragment_to_locationReminderFragment"
+            app:destination="@id/locationReminderFragment"
+            app:popUpTo="@id/locationReminderFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/locationReminderFragment"
+        android:name="com.example.udacitylocationreminder.fragments.LocationReminderFragment"
+        android:label="location_reminder_fragment"
+        tools:layout="@layout/location_reminder_fragment" >
+        <action
+            android:id="@+id/action_locationReminderFragment_to_launchFragment"
+            app:destination="@id/launchFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/launchFragment" />
+        <action
+            android:id="@+id/action_locationReminderFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.example.udacitylocationreminder.fragments.MapsFragment"
+        android:label="MapsFragment" />
+</navigation>
