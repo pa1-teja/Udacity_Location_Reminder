@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.udacitylocationreminder.viewmodels.LocationReminderViewModel
-import java.lang.IllegalArgumentException
 
 class LocationReminderViewModelFactory(private val context: Context): ViewModelProvider.Factory {
 

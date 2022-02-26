@@ -8,12 +8,6 @@ buildscript {
         classpath 'androidx.navigation:navigation-safe-args-gradle-plugin:2.4.1'
         classpath 'com.google.gms:google-services:4.3.10'
     }
-
-//    allprojects {
-//        repositories {
-//            google()
-//        }
-//    }
 }
 plugins {
     id 'com.android.application' version '7.1.2' apply false

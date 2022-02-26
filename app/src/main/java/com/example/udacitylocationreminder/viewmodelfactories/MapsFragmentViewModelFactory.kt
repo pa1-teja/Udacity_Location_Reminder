@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.udacitylocationreminder.viewmodels.MapsFragmentViewModel
-import java.lang.IllegalArgumentException
 
 class MapsFragmentViewModelFactory(private val context: Context): ViewModelProvider.Factory {
 

@@ -1,48 +1,40 @@
 package com.example.udacitylocationreminder.fragments
 
-import android.content.*
-
+import android.content.Context
 import android.os.Bundle
-import android.os.Parcel
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.navigation.fragment.findNavController
 import com.example.udacitylocationreminder.BaseFragment
 import com.example.udacitylocationreminder.R
 import com.example.udacitylocationreminder.databinding.FragmentMapsBinding
 import com.example.udacitylocationreminder.viewmodelfactories.MapsFragmentViewModelFactory
 import com.example.udacitylocationreminder.viewmodels.MapsFragmentViewModel
-import com.google.android.gms.maps.*
-
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import timber.log.Timber
 
-class MapsFragment() : BaseFragment(),GoogleMap.OnMapLongClickListener, OnMapReadyCallback{
+class MapsFragment : BaseFragment(), GoogleMap.OnMapLongClickListener, OnMapReadyCallback,
+    View.OnClickListener {
 
     private lateinit var mapsFragmentBinding: FragmentMapsBinding
-    private lateinit var googleMapObj: GoogleMap
 
     private lateinit var mapsViewModel: MapsFragmentViewModel
 
-    constructor(parcel: Parcel) : this() {
-
-    }
-//    by lazy {
-//        Timber.d("view model is ready")
-//
-//
-//    }
-
+    private lateinit var googleMapObj: GoogleMap
 
     override fun onStart() {
         super.onStart()
-        context?.bindService( mapsViewModel.serviceIntent, mapsViewModel.serviceConnection, Context.BIND_AUTO_CREATE)
+        context?.bindService(
+            mapsViewModel.serviceIntent,
+            mapsViewModel.serviceConnection,
+            Context.BIND_AUTO_CREATE
+        )
     }
 
     override fun onCreateView(
@@ -50,18 +42,19 @@ class MapsFragment() : BaseFragment(),GoogleMap.OnMapLongClickListener, OnMapRea
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        mapsFragmentBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_maps,container,false)
-        val mapsViewModelFactory = MapsFragmentViewModelFactory(requireActivity())
-        mapsViewModel = ViewModelProvider(requireActivity(),mapsViewModelFactory).get(MapsFragmentViewModel::class.java)
-        mapsFragmentBinding.lifecycleOwner = this
+        mapsFragmentBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_maps, container, false)
+        val mapsViewModelFactory = MapsFragmentViewModelFactory(requireContext())
+        mapsViewModel = ViewModelProvider(
+            requireActivity(),
+            mapsViewModelFactory
+        ).get(MapsFragmentViewModel::class.java)
         mapsFragmentBinding.viewModel = mapsViewModel
-        val mapFragment = childFragmentManager.findFragmentById(mapsFragmentBinding.map.id) as SupportMapFragment?
+        val mapFragment =
+            childFragmentManager.findFragmentById(mapsFragmentBinding.map.id) as SupportMapFragment?
         mapFragment?.getMapAsync(this)
-
-        mapsViewModel.location.observe(viewLifecycleOwner, Observer {
-            Timber.d("current location  on fragment ${it}")
-            mapsViewModel.setCurrentLocationOnMap(googleMapObj)
-        })
+        mapsFragmentBinding.saveMarker.setOnClickListener(this)
+        mapsFragmentBinding.lifecycleOwner = this
         return mapsFragmentBinding.root
     }
 
@@ -71,11 +64,26 @@ class MapsFragment() : BaseFragment(),GoogleMap.OnMapLongClickListener, OnMapRea
     }
 
     override fun onMapLongClick(p0: LatLng) {
-        TODO("Not yet implemented")
+        mapsViewModel.setPointOfAddressMarker(p0, googleMapObj)
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         googleMapObj = googleMap
+        mapsViewModel.setCurrentLocationOnMap(googleMapObj)
+        googleMap.setOnMapLongClickListener(this)
         Timber.d("on map ready")
     }
+
+    override fun onClick(p0: View?) {
+        when (p0?.id) {
+            mapsFragmentBinding.saveMarker.id -> {
+                findNavController().navigate(
+                    MapsFragmentDirections.actionMapsFragmentToAddReminderFragment(
+                        mapsViewModel.reminderInfo.value!!
+                    )
+                )
+            }
+        }
+    }
+
 }

@@ -5,10 +5,8 @@ import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.os.Build
 import android.view.View
-import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.FragmentActivity
-import com.example.udacitylocationreminder.fragments.LocationReminderFragment
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.LocationSettingsRequest
@@ -70,8 +68,8 @@ fun isOSVersionBiggerThanQ():Boolean{
 }
 
 
-    private const val REQUEST_FOREGROUND_AND_BACKGROUND_PERMISSION_RESULT_CODE = 33
-    private const val REQUEST_FOREGROUND_ONLY_PERMISSIONS_REQUEST_CODE = 34
+private const val REQUEST_FOREGROUND_AND_BACKGROUND_PERMISSION_RESULT_CODE = 33
+private const val REQUEST_FOREGROUND_ONLY_PERMISSIONS_REQUEST_CODE = 34
     private const val REQUEST_TURN_DEVICE_LOCATION_ON = 29
     private const val LOCATION_PERMISSION_INDEX = 0
     private const val BACKGROUND_LOCATION_PERMISSION_INDEX = 1

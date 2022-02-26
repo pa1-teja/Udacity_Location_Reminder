@@ -1,6 +1,5 @@
 package com.example.udacitylocationreminder.services
 
-import android.annotation.SuppressLint
 import android.app.NotificationManager
 import android.app.Service
 import android.content.Context
@@ -11,8 +10,6 @@ import android.location.Location
 import android.os.Binder
 import android.os.IBinder
 import android.os.Looper
-import android.util.Log
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.android.gms.location.*
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
@@ -37,6 +34,8 @@ class LocationReminderService: Service() {
 
     private lateinit var notificationManager: NotificationManager
 
+    private val locationReminderBroadcastReceiver = LocationReminderBroadcastReceiver()
+
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         Timber.d("Location service started")
         return super.onStartCommand(intent, flags, startId)
@@ -52,7 +51,7 @@ class LocationReminderService: Service() {
         val intent = Intent()
         intent.action = "Location_Reminder_Action"
 
-        registerReceiver(LocationReminderBroadcastReceiver(),intentFilter)
+        registerReceiver(locationReminderBroadcastReceiver, intentFilter)
 
         locationRequest = LocationRequest.create().apply {
             interval = TimeUnit.SECONDS.toMillis(5)
@@ -102,7 +101,7 @@ class LocationReminderService: Service() {
 
     override fun onDestroy() {
         super.onDestroy()
-        unregisterReceiver(LocationReminderBroadcastReceiver())
+        unregisterReceiver(locationReminderBroadcastReceiver)
         Timber.e("${packageName} service is destroyed")
     }
 
@@ -113,7 +112,6 @@ class LocationReminderService: Service() {
 //    @SuppressLint("MissingPermission")
     fun subscribeToLocationUpdates(){
         Timber.d("subscribeToLocationUpdates()")
-//        startService(Intent(applicationContext,LocationReminderService::class.java))
         try {
             fusedLocationProviderClient.requestLocationUpdates(locationRequest,locationCallback, Looper.getMainLooper())
         }catch (exception: SecurityException){
