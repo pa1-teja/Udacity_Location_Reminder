@@ -1,38 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:elevation="@dimen/cardview_default_elevation"
-    android:layout_margin="12dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:id="@+id/msg"
-        android:padding="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        tools:text="@string/app_name"
-        app:layout_constraintEnd_toStartOf="@id/location_name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+    <data>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:id="@+id/location_name"
-        android:padding="8dp"
-        android:textSize="12sp"
-        android:gravity="bottom|right"
-        tools:text="@string/app_name"
-        android:textColor="@color/button_bg"
-        app:layout_constraintStart_toEndOf="@id/msg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        <variable
+            name="dataItem"
+            type="com.example.udacitylocationreminder.database.entities.ReminderTableEntity" />
+    </data>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_margin="12dp"
+        android:elevation="@dimen/cardview_default_elevation">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/msg"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="8dp"
+            android:text="@{dataItem.reminderTitle}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/location_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/app_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/location_name"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="bottom|right"
+            android:padding="8dp"
+            android:text="@{dataItem.pointOfInterestAddress}"
+            android:textColor="@color/button_bg"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/msg"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/app_name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

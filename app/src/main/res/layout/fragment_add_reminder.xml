@@ -17,17 +17,20 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="8dp"
             android:hint="@string/title"
             app:layout_constraintBottom_toTopOf="@id/reminder_description"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/reminder_description"
             android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_height="70dp"
             android:layout_margin="12dp"
+            android:layout_marginTop="104dp"
             android:hint="@string/description"
             android:maxLines="8"
             android:minLines="1"

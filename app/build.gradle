@@ -23,7 +23,7 @@ android {
 
     buildFeatures{
         viewBinding true
-        dataBinding  true
+        dataBinding true
     }
 
     buildTypes {
@@ -64,6 +64,7 @@ dependencies {
 
     //noinspection LifecycleAnnotationProcessorWithJava8
     kapt 'androidx.lifecycle:lifecycle-compiler:2.4.1'
+    kapt 'androidx.room:room-compiler:2.4.2'
 
     //Debug Logging libs
     implementation 'com.jakewharton.timber:timber:5.0.1'

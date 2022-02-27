@@ -1,16 +1,17 @@
 package com.example.udacitylocationreminder.viewmodelfactories
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.udacitylocationreminder.database.LocationReminderDatabase
 import com.example.udacitylocationreminder.viewmodels.LocationReminderViewModel
 
-class LocationReminderViewModelFactory(private val context: Context): ViewModelProvider.Factory {
+class LocationReminderViewModelFactory(private val locationReminderDatabase: LocationReminderDatabase) :
+    ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(LocationReminderViewModel::class.java)){
-            return LocationReminderViewModel(context) as T
-        }else{
+        if (modelClass.isAssignableFrom(LocationReminderViewModel::class.java)) {
+            return LocationReminderViewModel(locationReminderDatabase) as T
+        } else {
             throw IllegalArgumentException("Unknown ViewModel class")
         }
     }

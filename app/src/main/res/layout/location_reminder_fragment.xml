@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.example.udacitylocationreminder.viewmodels.LocationReminderViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,7 +20,6 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:id="@+id/reminders_list"
-            tools:listitem="@layout/reminder_list_item"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -38,6 +41,7 @@
             android:layout_height="wrap_content"
             android:text="@string/no_data"
             android:textSize="18sp"
+            android:id="@+id/no_data_msg"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/empty_reminder_img" />

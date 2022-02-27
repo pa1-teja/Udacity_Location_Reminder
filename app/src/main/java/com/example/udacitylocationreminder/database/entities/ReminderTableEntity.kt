@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey
 data class ReminderTableEntity(
 
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    val id: Long?,
 
     @ColumnInfo(name = "title")
     val reminderTitle: String,

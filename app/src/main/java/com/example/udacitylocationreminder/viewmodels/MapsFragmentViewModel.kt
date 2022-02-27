@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
 import android.location.Geocoder
-import android.location.Location
 import android.os.IBinder
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -33,7 +32,6 @@ class MapsFragmentViewModel(val context: Context): ViewModel(), ServiceConnectio
 
     val serviceIntent = Intent(context, LocationReminderService::class.java)
     val serviceConnection = this
-    private lateinit var locationMapsObj: Location
 
     private var fusedLocationProviderClient = FusedLocationProviderClient(context)
 
