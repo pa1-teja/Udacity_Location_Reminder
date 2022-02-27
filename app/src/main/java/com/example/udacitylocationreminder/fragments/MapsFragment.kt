@@ -86,4 +86,5 @@ class MapsFragment : BaseFragment(), GoogleMap.OnMapLongClickListener, OnMapRead
         }
     }
 
+
 }

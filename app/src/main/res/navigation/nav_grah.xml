@@ -13,6 +13,7 @@
         <action
             android:id="@+id/action_launchFragment_to_locationReminderFragment"
             app:destination="@id/locationReminderFragment"
+            app:launchSingleTop="true"
             app:popUpTo="@id/locationReminderFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -25,7 +26,8 @@
             android:id="@+id/action_locationReminderFragment_to_launchFragment"
             app:destination="@id/launchFragment"
             app:launchSingleTop="false"
-            app:popUpTo="@id/launchFragment" />
+            app:popUpTo="@id/launchFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_locationReminderFragment_to_mapsFragment"
             app:destination="@id/mapsFragment" />
@@ -36,10 +38,14 @@
         android:label="MapsFragment">
         <action
             android:id="@+id/action_mapsFragment_to_addReminderFragment"
-            app:destination="@id/addReminderFragment" />
+            app:destination="@id/addReminderFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/mapsFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_mapsFragment_to_locationReminderFragment"
             app:destination="@id/locationReminderFragment"
+            app:launchSingleTop="true"
             app:popUpTo="@id/mapsFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -50,6 +56,7 @@
         <action
             android:id="@+id/action_addReminderFragment_to_locationReminderFragment"
             app:destination="@id/locationReminderFragment"
+            app:launchSingleTop="true"
             app:popUpTo="@id/addReminderFragment"
             app:popUpToInclusive="true" />
         <argument

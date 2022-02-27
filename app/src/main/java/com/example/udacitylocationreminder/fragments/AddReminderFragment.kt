@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.udacitylocationreminder.BaseFragment
 import com.example.udacitylocationreminder.R
 import com.example.udacitylocationreminder.database.LocationReminderDatabase
@@ -76,6 +77,7 @@ class AddReminderFragment : BaseFragment(), View.OnClickListener {
                             id = null
                         )
                     )
+                    findNavController().navigate(AddReminderFragmentDirections.actionAddReminderFragmentToLocationReminderFragment())
                 }
             }
         }

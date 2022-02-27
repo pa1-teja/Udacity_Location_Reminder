@@ -97,7 +97,8 @@ class LocationReminderFragment : BaseFragment(), View.OnClickListener {
         when(item.itemId){
             R.id.logout_btn -> {
                 FirebaseAuthUtils.signOutUser(requireContext())
-                    findNavController().navigate(LocationReminderFragmentDirections.actionLocationReminderFragmentToLaunchFragment())
+                FirebaseAuthUtils.setCurrentUser(null)
+                findNavController().navigate(LocationReminderFragmentDirections.actionLocationReminderFragmentToLaunchFragment())
             }
         }
         return true
