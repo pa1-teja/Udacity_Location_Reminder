@@ -13,4 +13,10 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+
+    <style name="FirebaseUI" parent="Theme.UdacityLocationReminder">
+        <item name="android:windowBackground">@color/firebase_ui_bg</item>
+    </style>
+
 </resources>

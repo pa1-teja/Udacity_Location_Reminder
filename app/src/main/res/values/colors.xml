@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="button_bg">#d81b60</color>
+    <color name="firebase_ui_bg">#303030</color>
 </resources>

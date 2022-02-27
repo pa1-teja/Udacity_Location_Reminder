@@ -69,9 +69,10 @@ class LaunchFragment : BaseFragment(), View.OnClickListener {
 
 
     fun getSignInIntent(): Intent {
-        return FirebaseAuthUtils.getFirebaseAuthUIInstance().createSignInIntentBuilder().setAvailableProviders(
-            FirebaseAuthUtils.authProviders.toMutableList()
-        ).build()
+        return FirebaseAuthUtils.getFirebaseAuthUIInstance().createSignInIntentBuilder()
+            .setAvailableProviders(
+                FirebaseAuthUtils.authProviders.toMutableList()
+            ).setLogo(R.drawable.map).setTheme(R.style.FirebaseUI).build()
     }
 
     fun showSignInOrReminderScreen(){
