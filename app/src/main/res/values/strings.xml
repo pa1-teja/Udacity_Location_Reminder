@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Udacity Location Reminder</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="welcome_msg">Welcome to the location reminder app</string>
     <string name="login_btn_text">login</string>
     <string name="add_reminder_button">Add reminder button</string>
@@ -9,9 +8,18 @@
     <string name="save">save</string>
 
     <string name="location_required_error">Location services must be enabled for this game.</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="save_button">save button</string>
     <string name="description">Description</string>
     <string name="title">Title</string>
+    <string name="channel_name">Geofence_location_reminder</string>
+    <string name="channel_id">1993</string>
+    <string name="notification_description">Geofence Location Reminder</string>
+    <string name="notification_title">Udacity Location Reminder</string>
+
+    <string name="geofence_unknown_error">Unknown error: the Geofence service is not available now.</string>
+    <string name="geofence_not_available">Geofence service is not available now. Go to Settings>Location>Mode and choose High accuracy.</string>
+    <string name="geofence_too_many_geofences">Your app has registered too many geofences.</string>
+    <string name="geofence_too_many_pending_intents">You have provided too many PendingIntents to the addGeofences() call.</string>
 </resources>

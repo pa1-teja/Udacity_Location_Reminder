@@ -1,6 +1,5 @@
 package com.example.udacitylocationreminder.viewmodels
 
-import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -24,7 +23,7 @@ class MapsFragmentViewModel(val context: Context): ViewModel(), ServiceConnectio
 
     private var locationReminderServiceBound = false
 
-    @SuppressLint("StaticFieldLeak")
+
     private var locationReminderService: LocationReminderService? = null
 
     private val _reminderInfo = MutableLiveData<basicReminderInfo>()
@@ -59,6 +58,10 @@ class MapsFragmentViewModel(val context: Context): ViewModel(), ServiceConnectio
                 MarkerOptions().position(currentLocation).title("Your current location")
             )
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15f))
+        }
+
+        fusedLocationProviderClient.lastLocation.addOnFailureListener {
+            Timber.e("Current Location Retrieval failed dure to : ${it.message}")
         }
     }
 

@@ -1,5 +1,6 @@
 package com.example.udacitylocationreminder.services
 
+import android.annotation.SuppressLint
 import android.app.NotificationManager
 import android.app.Service
 import android.content.Context
@@ -68,7 +69,6 @@ class LocationReminderService: Service() {
 
                 intent.putExtra("LOCATION_OBJECT",currentLocation)
                 sendBroadcast(intent)
-
             }
         }
     }
@@ -109,7 +109,7 @@ class LocationReminderService: Service() {
         internal val service: LocationReminderService get() = this@LocationReminderService
     }
 
-//    @SuppressLint("MissingPermission")
+    @SuppressLint("MissingPermission")
     fun subscribeToLocationUpdates(){
         Timber.d("subscribeToLocationUpdates()")
         try {
